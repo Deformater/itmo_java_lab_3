@@ -1,0 +1,82 @@
+@startuml name
+title Sequence Diagram for laba3 package
+skinparam componentStyle uml2
+
+enum Books {
+    WAR_AND_PEACE
+    CRIME_AND_PUNISHMENT
+    THE_IDIOT
+    THE_BROTHERS_KARAMAZOV
+}
+
+enum Skills {
+    TRUMPET
+    COOKING
+    WRITING
+    READING
+}
+
+abstract class Person {
+    -String name
+    -List<Skills> skills
+    +Person(String, List<Skills>)
+    +getSkills(): List<Skills>
+    +setSkills(List<Skills>)
+    +addSkills(List<Skills>)
+    +getName(): String
+    +setName(String)
+    +toString(): String
+    +equals(Object): boolean
+    +hashCode(): int
+}
+
+class Dostoevskiy {
+    -List<Books> books
+    +Dostoevskiy(String, List<Skills>, List<Books>)
+    +getBooks(): List<Books>
+    +setBooks(List<Books>)
+    +addBooks(List<Books>)
+    +toString(): String
+    +equals(Object): boolean
+    +hashCode(): int
+}
+
+class Kaktus {
+    -List<Person> readers
+    -List<Person> fans
+    +Kaktus(String, List<Skills>, List<Person>, List<Person>)
+    +getReaders(): List<Person>
+    +setReaders(List<Person>)
+    +addReaders(List<Person>)
+    +getFans(): List<Person>
+    +setFans(List<Person>)
+    +addFans(List<Person>)
+    +toString(): String
+    +equals(Object): boolean
+    +hashCode(): int
+}
+
+interface Reader {
+    +readerOf(): List<Person>
+    +addWriter(Person)
+}
+
+interface Writer {
+    +writerOf(): List<Books>
+    +addBooks(List<Books>)
+}
+
+interface Fan {
+    +fanOf(): List<Person>
+    +addIdols(List<Person>)
+}
+
+Person->Skills: Uses
+Person --> Dostoevskiy: Inherits
+Person-->Kaktus: Inherits
+Dostoevskiy->Books: Uses
+Dostoevskiy --> Writer: Implements
+Kaktus->Dostoevskiy: Uses
+Fan --> Kaktus:Implements
+Reader --> Kaktus: Implements
+@enduml
