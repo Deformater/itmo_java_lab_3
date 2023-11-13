@@ -1,20 +1,12 @@
 package laba3;
 
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         Kaktus kaktus = new Kaktus();
-        System.out.println(kaktus);
-        System.out.println(kaktus.readerOf());
-        System.out.println(kaktus.fanOf());
-        System.out.println(kaktus.getSkills());
-        System.out.println(kaktus.getName());
-
-        kaktus.addSkills(List.of(Skills.WRITING, Skills.READING));
-        System.out.println(kaktus.getSkills());
-        // kaktus.addIdols();
-        System.out.println(kaktus.fanOf());
-        System.out.println(kaktus.readerOf());
+        Dostoevskiy dostoevskiy = new Dostoevskiy();
+        String text = "Спешу уведомить, что похищенные деньги зарыты во дворе дома No 47 по Кривой улице. Желаю успеха в розысках и счастья в личной жизни. Ваша усердная читательница и почитательница госпожа Кактус. При сем сообщаю, что отлично печатаю на пишущей машинке, знаю кулинарию и умею играть на трубе. ";
+        Letter letter = new Letter(text, kaktus, dostoevskiy);
+        System.out.println(letter);
     }
 }

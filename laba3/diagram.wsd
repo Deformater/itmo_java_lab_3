@@ -56,6 +56,18 @@ class Kaktus {
     +hashCode(): int
 }
 
+class Letter {
+    -String text
+    -Person to
+    -Person from
+    +Letter(String, Person, Person)
+    +getText(): String
+    +setText(String)
+    +toString(): String
+    +equals(Object): boolean
+    +hashCode(): int
+}
+
 interface Reader {
     +readerOf(): List<Person>
     +addWriter(Person)
@@ -75,7 +87,7 @@ Person->Skills: Uses
 Person --> Dostoevskiy: Inherits
 Person-->Kaktus: Inherits
 Dostoevskiy->Books: Uses
-Dostoevskiy --> Writer: Implements
+Writer --> Dostoevskiy: Implements
 Kaktus->Dostoevskiy: Uses
 Fan --> Kaktus:Implements
 Reader --> Kaktus: Implements
